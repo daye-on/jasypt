@@ -21,15 +21,21 @@ public class JasyptConfig {
     public StringEncryptor stringEncryptor() {
         PooledPBEStringEncryptor encryptor = new PooledPBEStringEncryptor();
 
-        encryptor.setPassword(password);
-        encryptor.setAlgorithm("PBEWithMD5AndDES");
-        encryptor.setPoolSize(1);
         encryptor.setProvider(new BouncyCastleProvider());
+        encryptor.setPoolSize(2); // 암호화 요청의 pool 크기 (권장:2)
+        encryptor.setPassword(password); // 암호화 키
+        //encryptor.setAlgorithm("PBEWithMD5AndDES"); // 사용할 알고리즘
+        encryptor.setAlgorithm("PBEWithSHA256And128BitAES-CBC-BC");
 
-        // 암호화 확인
         String value = "Hello, world!";
-        String valueEnc = encryptor.encrypt(value);
-        log.info("Result : '{}' -> '{}'", value, valueEnc);
+
+        // 암호화
+        String encValue = encryptor.encrypt(value);
+        log.info("Encrypted -> ENC({})", encValue);
+
+        // 복호화
+        String decValue = encryptor.decrypt(encValue);
+        log.info("Decrypted -> {}", decValue);
 
         return encryptor;
     }
