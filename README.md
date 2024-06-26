@@ -3,11 +3,13 @@
 * PBEWithSHA256And128BitAES-CBC-BC : SHA256, AES128를 이용한 암호화
   * '-BC'로 끝나는 알고리즘은 Bouncy Castle JCE Provider에서 제공하는 알고리즘이다.
 
+
 ### 개발환경
 * JDK : Azul zulu 17
 * Spring boot 3.2.7
 * Intellij 2023.1.3 (Ultimate Edition)
 * Mac m1 pro
+
 
 ### 레퍼런스
 * [property 암/복호화를 위한 Jasypt 적용기 -1-](https://velog.io/@ssol_916/Jasypt으로-properties-암호화)
