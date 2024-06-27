@@ -8,6 +8,8 @@ public class JasyptApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(JasyptApplication.class, args);
-    }
 
+        MsgDigest msgDigest = new MsgDigest();
+        msgDigest.myHash("myPassword");
+    }
 }
